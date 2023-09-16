@@ -9,7 +9,8 @@ def test_can_create_task():
     create_task_response = crete_new_task(payload)
     assert create_task_response.status_code == 200
     data = create_task_response.json()
-
+    response_time = create_task_response.elapsed.total_seconds()
+    print(response_time)
     task_id = data['task']['task_id']
     get_task_response = get_task(task_id)
     assert get_task_response.status_code == 200
